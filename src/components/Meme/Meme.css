@@ -16,7 +16,7 @@ main {
     padding: 8px 16px;
     border: 1px solid #374151;
     border-radius: 8px;
-
+    font-family: inherit;
 }
 .meme--text-input {
     margin-top: 5px;
