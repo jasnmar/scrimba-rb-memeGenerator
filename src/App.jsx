@@ -9,7 +9,7 @@ import Header from './components/Header/Header'
 import Meme from './components/Meme/Meme'
 
 function App() {
-  const result = useState("YNoes")
+  const [result, func] = useState("YNoes")
   console.log('result: ', result)
   return (
     <>
