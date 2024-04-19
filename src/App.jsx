@@ -1,4 +1,4 @@
-import { useState } from 'react'
+//import { useState } from 'react'
     /**
      * Challenge: Replace our hard-coded "Yes" on the page with 
      * some state initiated with React.useState()
@@ -9,14 +9,13 @@ import Header from './components/Header/Header'
 import Meme from './components/Meme/Meme'
 
 function App() {
-  const [result, setResult] = useState("Yes")
-  setResult("No")
-  console.log('result: ', result)
+
+
   return (
     <>
       <Header />
       <Meme />
-      <h1>{result}</h1>
+
     </>
   )
 }

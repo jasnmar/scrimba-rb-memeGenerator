@@ -35,3 +35,9 @@ main {
     margin-top:20px;
     color:white;
 }
+
+.meme--image {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 4px;
+}
