@@ -9,7 +9,8 @@ import Header from './components/Header/Header'
 import Meme from './components/Meme/Meme'
 
 function App() {
-  const [result, func] = useState("YNoes")
+  const [result, setResult] = useState("Yes")
+  setResult("No")
   console.log('result: ', result)
   return (
     <>
