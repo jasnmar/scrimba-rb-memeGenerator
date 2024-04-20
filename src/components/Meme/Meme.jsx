@@ -28,13 +28,13 @@ function Meme() {
 
     //Only get a new list when the form loads
     useEffect(() => {
-        fetch("https://api.imgflip.com/get_memes")
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setAllMemes(data.data.memes)
-            })
-    }, [])
+        async function getMemesData() {
+            const res = await fetch("https://api.imgflip.com/get_memes")
+            const data = await res.json()
+            setAllMemes(data.data.memes)
+        }
+        getMemesData()
+    }, [] )
 
 
     function getImage() {
