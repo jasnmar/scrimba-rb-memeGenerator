@@ -1,28 +1,19 @@
 import "./Meme.css";
 import { useState } from "react";
 import memesData from "../../memesData.js";
-/**
- * Challenge: Update our state to save the meme-related
- * data as an object called `meme`. It should have the
- * following 3 properties:
- * topText, bottomText, randomImage.
- *
- * The 2 text states can default to empty strings for now,
- * amd randomImage should default to "http://i.imgflip.com/1bij.jpg"
- *
- * Next, create a new state variable called `allMemeImages`
- * which will default to `memesData`, which we imported above
- *
- * Lastly, update the `getMemeImage` function and the markup
- * to reflect our newly reformed state object and array in the
- * correct way.
- */
+    /**
+     * Challenge: 
+     * 1. Set up the text inputs to save to
+     *    the `topText` and `bottomText` state variables.
+     * 2. Replace the hard-coded text on the image with
+     *    the text being saved to state.
+     */
 
 function Meme() {
     //const [memeImage, setMemeImage] = useState("")
     const [meme, setMeme] = useState({
-        topText: "",
-        bottomText: "",
+        topText: "One does not simply",
+        bottomText: "Walk into Mordor",
         randomImage: "http://i.imgflip.com/1bij.jpg",
     });
     const [allMemeImages, setAllMemeImages] = useState(memesData);
@@ -37,15 +28,17 @@ function Meme() {
             };
         });
     }
-    console.log(meme)
-    function handleChange(e) {
+    function handleChange(event) {
+        const {name, value, type, checked} = event.target
         setMeme(prevMeme => {
-            return {
-                ...prevMeme,
-                [e.target.name]: e.target.value
-            }
+          return {
+            ...prevMeme,
+            [name]: type === "checkbox" ? checked : value
+          }
         })
-    }
+        
+      }
+
     return (
         <main>
             <div className="meme--text-inputs">
@@ -83,7 +76,11 @@ function Meme() {
             >
                 Get a new meme image 🖼
             </button>
-            <img className="meme--image" src={meme.randomImage}></img>
+            <div className="meme">
+                <img src={meme.randomImage} className="meme--image" />
+                <h2 className="meme--text top">{meme.topText}</h2>
+                <h2 className="meme--text bottom">{meme.bottomText}</h2>
+            </div>
         </main>
     );
 }
