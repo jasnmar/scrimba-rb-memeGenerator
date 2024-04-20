@@ -37,6 +37,15 @@ function Meme() {
             };
         });
     }
+    console.log(meme)
+    function handleChange(e) {
+        setMeme(prevMeme => {
+            return {
+                ...prevMeme,
+                [e.target.name]: e.target.value
+            }
+        })
+    }
     return (
         <main>
             <div className="meme--text-inputs">
@@ -48,20 +57,22 @@ function Meme() {
                         className="meme--text-input"
                         id="meme--top-text"
                         type="text"
-                        name="top"
+                        name="topText"
                         placeholder="Top Text"
+                        onChange={handleChange}
                     ></input>
                 </div>
                 <div className="meme--input-group">
                     <label className="meme--label" htmlFor="meme--bottom-text">
-                        Top text
+                        Bottom text
                     </label>
                     <input
                         className="meme--text-input"
                         id="meme--bottom-text"
                         type="text"
-                        name="bottom"
+                        name="bottomText"
                         placeholder="Bottom Text"
+                        onChange={handleChange}
                     ></input>
                 </div>
             </div>
