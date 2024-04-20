@@ -1,34 +1,52 @@
 import "./Meme.css";
 import { useState, useEffect } from "react";
-import memesData from "../../memesData.js";
     /**
      * Challenge: 
-     * 1. Set up the text inputs to save to
-     *    the `topText` and `bottomText` state variables.
-     * 2. Replace the hard-coded text on the image with
-     *    the text being saved to state.
+     * As soon as the Meme component loads the first time,
+     * make an API call to "https://api.imgflip.com/get_memes".
+     * 
+     * When the data comes in, save just the memes array part
+     * of that data to the `allMemes` state
+     * 
+     * Think about if there are any dependencies that, if they
+     * changed, you'd want to cause to re-run this function.
+     * 
+     * Hint: for now, don't try to use an async/await function.
+     * Instead, use `.then()` blocks to resolve the promises
+     * from using `fetch`. We'll learn why after this challenge.
      */
 
 function Meme() {
-    //const [memeImage, setMemeImage] = useState("")
+    //State for the text and meme image
     const [meme, setMeme] = useState({
         topText: "One does not simply",
         bottomText: "Walk into Mordor",
         randomImage: "http://i.imgflip.com/1bij.jpg",
     });
-    const [allMemeImages, setAllMemeImages] = useState(memesData);
+    //State for the memes list
+    const [allMemes, setAllMemes] = useState("");
+
+    //Only get a new list when the form loads
+    useEffect(() => {
+        fetch("https://api.imgflip.com/get_memes")
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setAllMemes(data.data.memes)
+            })
+    }, [])
+
 
     function getImage() {
-        const memeList = allMemeImages.data.memes;
-        const randomMeme = Math.floor(Math.random() * memeList.length);
+        const randomMeme = Math.floor(Math.random() * allMemes.length);
         setMeme((prevMeme) => {
             return {
                 ...prevMeme,
-                randomImage: memeList[randomMeme].url,
+                randomImage: allMemes[randomMeme].url,
             };
         });
     }
-    
+
     function handleChange(event) {
         const {name, value, type, checked} = event.target
         setMeme(prevMeme => {
@@ -37,7 +55,6 @@ function Meme() {
             [name]: type === "checkbox" ? checked : value
           }
         })
-        
       }
 
     return (
