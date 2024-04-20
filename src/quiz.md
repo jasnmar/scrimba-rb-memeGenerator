@@ -1,28 +1,22 @@
-1. In a vanilla JS app, at what point in the form submission
-   process do you gather all the data from the filled-out form?
-   As you submit the form
+1. What is a "side effect" in React? What are some examples?
+Something that is outside of the control of React.
+3rd party APIs, DBs, "outside" DOM updates
+
+
+
+2. What is NOT a "side effect" in React? Examples?
+Things that are in Reacts control. Rendering react components, 
+managing react state.
+
+
+
+3. When does React run your useEffect function? When does it NOT run
+   the effect function?
+   When the dependancies array changes.
+   When the dependancies array doesn't change.
    
 
 
-2. In a React app, when do you gather all the data from
-   the filled-out form?
-   All of the time (using onchange for the controls
-   in the form)
-
-
-
-3. Which attribute in the form elements (value, name, onChange, etc.)
-   should match the property name being held in state for that input?
-   name
-   
-
-
-4. What's different about a saving the data from a checkbox element
-   vs. other form elements?
-   you have to check the checked property
-
-
-
-5. How do you watch for a form submit? How can you trigger
-   a form submit?
-   onSubmit event listener
+4. How would you explain what the "dependecies array" is?
+A list of things for useEffect to listen to and run the 
+callback function when they change

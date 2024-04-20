@@ -1,5 +1,5 @@
 import "./Meme.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import memesData from "../../memesData.js";
     /**
      * Challenge: 
@@ -28,6 +28,7 @@ function Meme() {
             };
         });
     }
+    
     function handleChange(event) {
         const {name, value, type, checked} = event.target
         setMeme(prevMeme => {
