@@ -53,6 +53,7 @@ function Meme() {
                         name="topText"
                         placeholder="Top Text"
                         onChange={handleChange}
+                        value={meme.topText}
                     ></input>
                 </div>
                 <div className="meme--input-group">
@@ -66,6 +67,7 @@ function Meme() {
                         name="bottomText"
                         placeholder="Bottom Text"
                         onChange={handleChange}
+                        value={meme.bottomText}
                     ></input>
                 </div>
             </div>
