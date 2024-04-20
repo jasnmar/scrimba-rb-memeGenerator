@@ -16,5 +16,5 @@ need to render for different cases
 
 4. What if you need to decide between > 2 options on
    what to display?
-   Ternary
+  if else if... I misread
 
